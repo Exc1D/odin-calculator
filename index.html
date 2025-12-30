@@ -4,80 +4,57 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>The Odin Project | Calculator</title>
-
-    <!-- Meta Description (140–160 chars recommended) -->
     <meta
       name="description"
-      content="A modern, fast, and accessible website built with best practices."
+      content="A simple calculator app made using vanilla JavaScript in partial fulfillment of the requirements of The Odin Prjoect."
     />
-
-    <!-- Author -->
-    <meta name="author" content="Your Name" />
-
-    <!-- Theme Color (Mobile Browser UI) -->
-    <meta name="theme-color" content="#0d0d0d" />
+    <meta name="author" content="@Exc1D" />
 
     <!-- Preconnect for Performance (Fonts, APIs, etc.) -->
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
     <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
 
     <!-- Styles -->
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="style.css" />
 
     <!-- Favicon -->
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+    <link
+      rel="icon"
+      href="/assets/favicon_io/favicon.ico"
+      type="image/x-icon"
+    />
 
     <!-- Open Graph (Social Sharing) -->
-    <meta property="og:title" content="My Website" />
+    <meta property="og:title" content="The Odin Project | Calculator" />
     <meta
       property="og:description"
-      content="A modern, fast, and accessible website."
+      content="A simple calculator app made using vanilla JavaScript in partial fulfillment of the requirements of The Odin Prjoect."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://example.com" />
     <meta property="og:image" content="https://example.com/og-image.png" />
-
-    <!-- Prevent Flash of Unstyled Content (Optional) -->
-    <style>
-      html {
-        visibility: hidden;
-      }
-    </style>
   </head>
 
   <body>
-    <!-- Skip Link for Accessibility -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-
-    <!-- Header -->
-    <header role="banner">
-      <nav aria-label="Main Navigation">
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/projects">Projects</a></li>
-          <li><a href="/blog">Blog</a></li>
-        </ul>
-      </nav>
-    </header>
-
     <!-- Main Content -->
-    <main id="main-content" role="main">
-      <h1>Welcome</h1>
-      <p>This is a production-ready HTML boilerplate.</p>
+    <main class="calculator-container">
+      <div class="display-container">
+        <div class="previous-display"></div>
+        <div class="current-display"></div>
+      </div>
     </main>
 
     <!-- Footer -->
     <footer role="contentinfo">
-      <p>&copy; 2025 Your Name. All rights reserved.</p>
+      <p>&copy; 2025 Exc1D. All rights reserved.</p>
+      <a
+        href="https://www.flaticon.com/free-icons/calculator"
+        title="calculator icons"
+        >Calculator icons created by logisstudio - Flaticon</a
+      >
     </footer>
-
-    <!-- No JavaScript Fallback -->
-    <noscript>
-      <p>This site works best with JavaScript enabled.</p>
-    </noscript>
-
     <!-- Scripts (Defer for Performance) -->
-    <script src="assets/js/main.js" defer></script>
+    <script src="script.js" defer></script>
 
     <!-- Reveal page after CSS loads -->
     <script>
