@@ -5,6 +5,7 @@ const displayText = document.getElementById("displayText");
 const clearBtn = document.getElementById("clearBtn");
 const deleteBtn = document.getElementById("deleteBtn");
 const equalsBtn = document.getElementById("equalsBtn");
+const decimalBtn = document.getElementById("decimalBtn");
 
 const numberBtns = document.querySelectorAll("[data-number]");
 const operatorBtns = document.querySelectorAll("[data-operator]");
@@ -50,3 +51,32 @@ function operate(operator, a, b) {
     return "ERROR";
   }
 }
+
+// ========================
+// DISPLAY
+// ========================
+
+function appendNumber(number) {
+  if (shouldResetDisplay === true) {
+    updateDisplay("");
+    shouldResetDisplay = false;
+  }
+
+  if (displayText === "0") {
+    updateDisplay(number);
+  } else {
+    updateDisplay(displayText.textContent + number);
+  }
+}
+
+function updateDisplay(value) {
+  displayText.textContent = value;
+}
+
+// ========================
+// EVENT LISTENERS
+// ========================
+
+numberBtns.forEach((btn) => {
+  btn.addEventListener("click", () => appendNumber(btn.textContent));
+});
