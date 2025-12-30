@@ -17,9 +17,65 @@ body {
 }
 
 .calculator-container {
-  background-color: hsl(0, 0%, 30%);
+  background-color: hsl(0, 0%, 20%);
   max-width: 25rem;
-  padding: 1.5rem;
   border-radius: 0.75rem;
   box-shadow: 10px 10px 8px black;
+}
+
+.display-container {
+  background-color: hsl(0, 0%, 10%);
+  min-height: 2.55rem;
+  padding: 1.25rem;
+  border-radius: 0.75rem 0.75rem 0 0;
+  text-align: right;
+  font-size: 2.75rem;
+  color: white;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.65rem;
+  padding: 1.5rem;
+}
+
+button {
+  background-color: hsl(0, 0%, 35%);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+button:hover {
+  background-color: hsl(0, 0%, 45%);
+}
+button:active {
+  background-color: hsl(0, 0%, 60%);
+}
+
+button[data-operator] {
+  background-color: hsl(30, 100%, 50%);
+}
+button[data-operator]:hover {
+  background-color: hsl(30, 80%, 50%);
+}
+button[data-operator]:active {
+  background-color: hsl(30, 100%, 60%);
+}
+
+.operator {
+  background-color: hsl(0, 0%, 28%);
+}
+.operator:hover {
+  background-color: hsl(0, 0%, 38%);
+}
+.operator:active {
+  background-color: hsl(0, 0%, 60%);
+}
+.equals {
+  grid-column: span 2;
 }
