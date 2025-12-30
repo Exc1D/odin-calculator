@@ -40,34 +40,37 @@
     <main class="calculator-container">
       <div class="display-container">
         <div class="previous-display"></div>
-        <div class="current-display">0</div>
+        <div class="current-display" id="displayText">0</div>
       </div>
       <div class="buttons">
-        <button data-operator="/">&divide;</button>
-        <button class="clear operator">AC</button>
-        <button class="delete operator">DEL</button>
+        <button data-operator="/" id="divideBtn">&divide;</button>
+        <button class="operator" id="clearBtn">AC</button>
+        <button class="operator" id="deleteBtn">DEL</button>
         <br />
-        <button data-operator="*">&times;</button>
+        <button data-operator="*" id="multiplyBtn">&times;</button>
         <button data-number="7">7</button>
         <button data-number="8">8</button>
         <button data-number="9">9</button>
-        <button data-operator="-">-</button>
+        <button data-operator="-" id="minusBtn">-</button>
         <button data-number="4">4</button>
         <button data-number="5">5</button>
         <button data-number="6">6</button>
-        <button data-operator="+">+</button>
+        <button data-operator="+" id="plusBtn">+</button>
         <button data-number="1">1</button>
         <button data-number="2">2</button>
         <button data-number="3">3</button>
         <button data-number="0">0</button>
-        <button class="decimal">.</button>
-        <button class="equals operator">=</button>
+        <button id="decimalBtn">.</button>
+        <button class="operator" id="equalsBtn">=</button>
       </div>
     </main>
 
     <!-- Footer -->
     <footer role="contentinfo">
-      <p>&copy; 2025 Exc1D. All rights reserved.</p>
+      <p>
+        &copy; 2025 Exc1D. All rights reserved. | For Joy, Hero, Aiah, and Aria
+        🦴💙
+      </p>
       <a
         href="https://www.flaticon.com/free-icons/calculator"
         title="calculator icons"
