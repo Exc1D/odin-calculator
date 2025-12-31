@@ -104,3 +104,20 @@ button[data-operator]:active {
 #equalsBtn {
   grid-column: span 2;
 }
+
+.flash-animation {
+  animation-duration: 0.3s;
+  animation-name: flash;
+}
+
+@keyframes flash {
+  0% {
+    background-color: hsl(0, 0%, 10%);
+  }
+  50% {
+    background-color: hsl(0, 0%, 100%);
+  }
+  100% {
+    background-color: hsl(0, 0%, 10%);
+  }
+}
