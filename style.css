@@ -72,7 +72,8 @@ button:hover {
   background-color: hsl(0, 0%, 45%);
   transform: scale(1.08);
 }
-button:active {
+button:active,
+.keyboard-active {
   background-color: hsl(0, 0%, 60%);
   transform: scale(0.95);
 }
@@ -83,7 +84,8 @@ button[data-operator] {
 button[data-operator]:hover {
   background-color: hsl(200, 98%, 36%);
 }
-button[data-operator]:active {
+button[data-operator]:active,
+button[data-operator].keyboard-active {
   background-color: hsl(200, 100%, 60%);
 }
 
@@ -93,7 +95,8 @@ button[data-operator]:active {
 .operator:hover {
   background-color: hsl(0, 0%, 38%);
 }
-.operator:active {
+.operator:active,
+.operator.keyboard-active {
   background-color: hsl(0, 0%, 60%);
 }
 
