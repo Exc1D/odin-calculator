@@ -211,28 +211,52 @@ equalsBtn.addEventListener("click", () => {
 
 decimalBtn.addEventListener("click", addDecimal);
 
-// KEYBOARD SHORTCUTS (Bonus!)
+// KEYBOARD SHORTCUTS with  FLASH FEEDBACK (Bonus!)
 
 document.addEventListener("keydown", (e) => {
+  let button = null; // Variable to store the button we need to flash
+
+  // Numbers 0-9
   if (e.key >= "0" && e.key <= "9") {
+    button = document.querySelector(`[data-number="${e.key}"]`);
     appendNumber(e.key);
   }
+
+  // Operators (+, -, *, /)
   if (["+", "-", "*", "/"].includes(e.key)) {
-    setOperator(e.key);
+    button = document.querySelector(`[data-operator="${e.key}"]`);
+    setOperator(e.key, button);
   }
+
+  // Equals / Enter
   if (e.key === "Enter" || e.key === "=") {
-    e.preventDefault();
+    button = equalsBtn;
+    e.preventDefault(); // Prevent default behavior (like submitting forms)
     evaluate();
     shouldResetDisplay = true;
   }
+
+  // Clear (Escape)
   if (e.key === "Escape") {
+    button = clearBtn;
     clear();
   }
+
+  // Backspace (Delete)
   if (e.key === "Backspace") {
-    e.preventDefault();
+    button = deleteBtn;
+    e.preventDefault(); // Prevent browser from going back
     deleteNum();
   }
+
+  // Decimal Point
   if (e.key === ".") {
+    button = decimalBtn;
     addDecimal();
+  }
+
+  // If a valid button was found, trigger the visual flash
+  if (button) {
+    flashButton(button);
   }
 });
