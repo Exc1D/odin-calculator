@@ -56,8 +56,9 @@ This project focused on strengthening fundamental JavaScript concepts:
 
 - **The Odin Project** for the curriculum and project specifications.
 - **Logisstudio** on Flaticon for the calculator icons.
-- Dedication: _For Joy, Hero, Aiah, and Aria 🦴💙_
 
 ## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
+
+_For Joy, Hero, Aiah, and Aria 🦴💙_
