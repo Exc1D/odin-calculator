@@ -3,6 +3,7 @@
 // ========================
 const displayContainer = document.getElementById("displayContainer");
 const displayText = document.getElementById("displayText");
+const previousDisplay = document.getElementById("previousDisplay");
 const clearBtn = document.getElementById("clearBtn");
 const deleteBtn = document.getElementById("deleteBtn");
 const equalsBtn = document.getElementById("equalsBtn");
@@ -68,6 +69,7 @@ function setOperator(operator, buttonElement = null) {
   firstNumber = displayText.textContent;
   currentOperator = operator;
   shouldResetDisplay = true;
+  previousDisplay = firstNumber + operator;
 }
 
 // ========================
@@ -79,6 +81,7 @@ function clear() {
   secondNumber = "";
   currentOperator = null;
   shouldResetDisplay = false;
+  updateEquation("");
   updateDisplay("0");
 }
 
@@ -129,6 +132,9 @@ function evaluate() {
   //Round to avoid decimals
   const roundedResult = Math.round(result * 100000) / 100000;
 
+  updateEquation(
+    firstNumber + " " + currentOperator + " " + secondNumber + " ="
+  );
   updateDisplay(roundedResult);
 
   // Add flash animation
@@ -157,12 +163,21 @@ function appendNumber(number) {
   } else {
     updateDisplay(displayText.textContent + number);
   }
+
+  if (currentOperator !== null) {
+    updateEquation(
+      firstNumber + " " + currentOperator + " " + displayText.textContent
+    );
+  }
 }
 
 function updateDisplay(value) {
   displayText.textContent = value;
 }
 
+function updateEquation(text) {
+  previousDisplay.textContent = text;
+}
 // ========================
 // EVENT LISTENERS
 // ========================
