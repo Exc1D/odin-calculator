@@ -110,8 +110,13 @@ function addDecimal() {
 }
 
 function flashButton(button) {
-  if (!button) return;
+  if (!button) return; // Safety check: do nothing if no button was found
+
+  // Add the class that mimics the CSS :active state
   button.classList.add("keyboard-active");
+
+  // Remove the class after 100ms to simulate a quick finger tap
+  // Without this timeout, the button would stay "pressed" forever
   setTimeout(() => {
     button.classList.remove("keyboard-active");
   }, 100);
@@ -214,10 +219,11 @@ decimalBtn.addEventListener("click", addDecimal);
 // KEYBOARD SHORTCUTS with  FLASH FEEDBACK (Bonus!)
 
 document.addEventListener("keydown", (e) => {
-  let button = null; // Variable to store the button we need to flash
+  let button = null; // We need to store the specific HTML element to animate it later
 
   // Numbers 0-9
   if (e.key >= "0" && e.key <= "9") {
+    // Find the button in the DOM that matches the key pressed
     button = document.querySelector(`[data-number="${e.key}"]`);
     appendNumber(e.key);
   }
@@ -231,7 +237,8 @@ document.addEventListener("keydown", (e) => {
   // Equals / Enter
   if (e.key === "Enter" || e.key === "=") {
     button = equalsBtn;
-    e.preventDefault(); // Prevent default behavior (like submitting forms)
+    // CRITICAL: Prevent "Enter" from triggering the last focused button (default browser behavior)
+    e.preventDefault();
     evaluate();
     shouldResetDisplay = true;
   }
@@ -245,7 +252,8 @@ document.addEventListener("keydown", (e) => {
   // Backspace (Delete)
   if (e.key === "Backspace") {
     button = deleteBtn;
-    e.preventDefault(); // Prevent browser from going back
+    // CRITICAL: Prevent "Backspace" from navigating the browser page back
+    e.preventDefault();
     deleteNum();
   }
 
@@ -255,7 +263,8 @@ document.addEventListener("keydown", (e) => {
     addDecimal();
   }
 
-  // If a valid button was found, trigger the visual flash
+  // Visual Feedback Trigger
+  // If we successfully mapped the key to a button element, run the flash animation
   if (button) {
     flashButton(button);
   }
