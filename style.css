@@ -127,7 +127,13 @@ button[data-operator].keyboard-active {
 }
 
 footer {
-  margin-top: 3rem;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background-color: hsl(0, 0%, 20%);
+  text-align: center;
 }
 a {
   color: hsl(200, 100%, 50%);
