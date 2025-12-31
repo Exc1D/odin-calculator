@@ -144,3 +144,16 @@ equalsBtn.addEventListener("click", () => {
   evaluate();
   shouldResetDisplay = true;
 });
+
+decimalBtn.addEventListener("click", () => {
+  if (shouldResetDisplay === true) {
+    updateDisplay("0.");
+    shouldResetDisplay = false;
+    return;
+  }
+  if (displayText.value.includes(".")) {
+    return;
+  }
+
+  updateDisplay(displayText.value + ".");
+});
