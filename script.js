@@ -62,6 +62,40 @@ function setOperator(operator) {
 }
 
 // ========================
+// UTILITY FUNCTIONS
+// ========================
+
+function clear() {
+  firstNumber = "";
+  secondNumber = "";
+  currentOperator = null;
+  shouldResetDisplay = false;
+  updateDisplay("0");
+}
+
+function deleteNum() {
+  const current = displayText.value;
+  if (current.length === 1 || current === "0") {
+    updateDisplay("0");
+  } else {
+    updateDisplay(current.slice(0, -1));
+  }
+}
+
+function addDecimal() {
+  if (shouldResetDisplay === true) {
+    updateDisplay("0.");
+    shouldResetDisplay = false;
+    return;
+  }
+  if (displayText.value.includes(".")) {
+    return;
+  }
+
+  updateDisplay(displayText.value + ".");
+}
+
+// ========================
 // EVALUATE CALCULATIONS
 // ========================
 
@@ -123,37 +157,40 @@ operatorBtns.forEach((btn) => {
   });
 });
 
-clearBtn.addEventListener("click", () => {
-  firstNumber = "";
-  secondNumber = "";
-  currentOperator = null;
-  shouldResetDisplay = false;
-  updateDisplay("0");
-});
+clearBtn.addEventListener("click", clear);
 
-deleteBtn.addEventListener("click", () => {
-  const current = displayText.value;
-  if (current.length === 1 || current === "0") {
-    updateDisplay("0");
-  } else {
-    updateDisplay(current.slice(0, -1));
-  }
-});
+deleteBtn.addEventListener("click", deleteNum);
 
 equalsBtn.addEventListener("click", () => {
   evaluate();
   shouldResetDisplay = true;
 });
 
-decimalBtn.addEventListener("click", () => {
-  if (shouldResetDisplay === true) {
-    updateDisplay("0.");
-    shouldResetDisplay = false;
-    return;
-  }
-  if (displayText.value.includes(".")) {
-    return;
-  }
+decimalBtn.addEventListener("click", addDecimal);
 
-  updateDisplay(displayText.value + ".");
+// ========================
+// KEYBOARD SHORTCUTS
+// ========================
+
+document.addEventListener("keydown", (e) => {
+  if (e.key >= "0" && e.key <= "9") {
+    appendNumber(e.key);
+  }
+  if (["+", "-", "*", "/"].includes(e.key)) {
+    setOperator(e.key);
+  }
+  if (e.key === "Enter" || e.key === "=") {
+    e.preventDefault();
+    evaluate();
+  }
+  if (e.key === "Escape") {
+    clear();
+  }
+  if (e.key === "Backspace") {
+    e.preventDefault();
+    deleteNum();
+  }
+  if (e.key === ".") {
+    addDecimal();
+  }
 });
