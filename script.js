@@ -1,6 +1,7 @@
 // ========================
 // DOM
 // ========================
+
 const displayContainer = document.getElementById("displayContainer");
 const displayText = document.getElementById("displayText");
 const previousDisplay = document.getElementById("previousDisplay");
@@ -25,6 +26,7 @@ let activeOperatorButton = null;
 // ========================
 // OPERATOR FUNCTIONS
 // ========================
+
 function add(a, b) {
   return a + b;
 }
@@ -107,6 +109,14 @@ function addDecimal() {
   updateDisplay(displayText.textContent + ".");
 }
 
+function flashButton(button) {
+  if (!button) return;
+  button.classList.add("keyboard-active");
+  setTimeout(() => {
+    button.classList.remove("keyboard-active");
+  }, 100);
+}
+
 // ========================
 // EVALUATE CALCULATIONS
 // ========================
@@ -132,9 +142,7 @@ function evaluate() {
   //Round to avoid decimals
   const roundedResult = Math.round(result * 100000) / 100000;
 
-  updateEquation(
-    firstNumber + " " + currentOperator + " " + secondNumber + " ="
-  );
+  updateEquation(`${firstNumber} ${currentOperator} ${secondNumber} =`);
   updateDisplay(roundedResult);
 
   // Add flash animation
@@ -166,7 +174,7 @@ function appendNumber(number) {
 
   if (currentOperator !== null) {
     updateEquation(
-      firstNumber + " " + currentOperator + " " + displayText.textContent
+      `${firstNumber} ${currentOperator} ${displayText.textContent}`
     );
   }
 }
