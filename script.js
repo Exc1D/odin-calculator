@@ -66,9 +66,9 @@ function setOperator(operator) {
 // ========================
 
 function evaluate() {
-  if (currentOperator === null || shouldResetDisplay) return;
+  if (currentOperator === null || firstNumber === "") return "ERROR";
   if (currentOperator === "/" && displayText.value === "0") {
-    alert("You can't divide by 0!");
+    alert("You can't divide by 0, dummy!");
     return;
   }
   secondNumber = displayText.value;
@@ -77,8 +77,14 @@ function evaluate() {
     parseFloat(firstNumber),
     parseFloat(secondNumber)
   );
-  updateDisplay(result);
+
+  //Round to avoid decimals
+  const roundedResult = Math.round(result * 100000) / 100000;
+
+  updateDisplay(roundedResult);
+  firstNumber = roundedResult.toString(); // Store result for chaining
   currentOperator = null;
+  shouldResetDisplay = true; // Next number starts fresh
 }
 
 // ========================
@@ -115,4 +121,12 @@ operatorBtns.forEach((btn) => {
     const operator = btn.getAttribute("data-operator");
     setOperator(operator);
   });
+});
+
+clearBtn.addEventListener("click", () => {
+  firstNumber = "";
+  secondNumber = "";
+  currentOperator = null;
+  shouldResetDisplay = "";
+  updateDisplay("0");
 });
