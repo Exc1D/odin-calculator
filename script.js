@@ -56,7 +56,7 @@ function setOperator(operator) {
   if (currentOperator !== null && shouldResetDisplay === false) {
     evaluate();
   }
-  firstNumber = displayText.textContent;
+  firstNumber = displayText.value;
   currentOperator = operator;
   shouldResetDisplay = true;
 }
@@ -67,11 +67,11 @@ function setOperator(operator) {
 
 function evaluate() {
   if (currentOperator === null || shouldResetDisplay) return;
-  if (currentOperator === "/" && displayText.textContent === "0") {
+  if (currentOperator === "/" && displayText.value === "0") {
     alert("You can't divide by 0!");
     return;
   }
-  secondNumber = displayText.textContent;
+  secondNumber = displayText.value;
   const result = operate(
     currentOperator,
     parseFloat(firstNumber),
@@ -91,52 +91,28 @@ function appendNumber(number) {
     shouldResetDisplay = false;
   }
 
-  if (displayText.textContent === "0") {
+  if (displayText.value === "0") {
     updateDisplay(number);
   } else {
-    updateDisplay(displayText.textContent + number);
+    updateDisplay(displayText.value + number);
   }
 }
 
 function updateDisplay(value) {
-  displayText.textContent = value;
-}
-
-function clear() {
-  updateDisplay("0");
-  firstNumber = "";
-  secondNumber = "";
-  currentOperator = null;
-}
-
-function deleteNumber() {
-  displayText.textContent = displayText.textContent.toString().slice(0, -1);
-}
-
-function appendDecimal() {
-  if (shouldResetDisplay) {
-    updateDisplay("0.");
-    shouldResetDisplay = false;
-    return;
-  }
-  if (!displayText.textContent.includes(".")) {
-    updateDisplay(displayText.textContent + ".");
-  }
+  displayText.value = value;
 }
 
 // ========================
 // EVENT LISTENERS
 // ========================
 
-equalsBtn.addEventListener("click", evaluate);
-clearBtn.addEventListener("click", clear);
-deleteBtn.addEventListener("click", deleteNumber);
-decimalBtn.addEventListener("click", appendDecimal);
-
 numberBtns.forEach((btn) => {
   btn.addEventListener("click", () => appendNumber(btn.textContent));
 });
 
 operatorBtns.forEach((btn) => {
-  btn.addEventListener("click", () => setOperator(btn.dataset.operator));
+  btn.addEventListener("click", () => {
+    const operator = btn.getAttribute("data-operator");
+    setOperator(operator);
+  });
 });
