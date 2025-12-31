@@ -44,7 +44,7 @@ This project focused on strengthening fundamental JavaScript concepts:
 
 1.  Clone the repository:
     ```bash
-    git clone [https://github.com/Exc1D/odin-calculator.git](https://github.com/Exc1D/odin-calculator.git)
+    git clone https://github.com/Exc1D/odin-calculator.git
     ```
 2.  Navigate to the project directory:
     ```bash
