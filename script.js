@@ -132,9 +132,15 @@ clearBtn.addEventListener("click", () => {
 });
 
 deleteBtn.addEventListener("click", () => {
-  if (displayText.value.length === 1 || displayText.value === "0") {
+  const current = displayText.value;
+  if (current.length === 1 || current === "0") {
     updateDisplay("0");
   } else {
-    updateDisplay(displayText.value.slice(0, -1));
+    updateDisplay(current.slice(0, -1));
   }
+});
+
+equalsBtn.addEventListener("click", () => {
+  evaluate();
+  shouldResetDisplay = true;
 });
