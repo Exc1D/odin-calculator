@@ -44,7 +44,7 @@ button {
   background-color: hsl(0, 0%, 35%);
   color: white;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 2rem;
   padding: 1.25rem;
   font-size: 1.5rem;
   cursor: pointer;
@@ -58,13 +58,13 @@ button:active {
 }
 
 button[data-operator] {
-  background-color: hsl(30, 100%, 50%);
+  background-color: hsl(200, 100%, 50%);
 }
 button[data-operator]:hover {
-  background-color: hsl(30, 80%, 50%);
+  background-color: hsl(200, 80%, 50%);
 }
 button[data-operator]:active {
-  background-color: hsl(30, 100%, 60%);
+  background-color: hsl(200, 100%, 60%);
 }
 
 .operator {
