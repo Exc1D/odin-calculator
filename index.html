@@ -38,15 +38,9 @@
   <body>
     <!-- Main Content -->
     <main class="calculator-container">
-      <div class="display-container">
-        <input class="previous-display" placeholder="0" value="0" readonly />
-        <input
-          class="current-display"
-          id="displayText"
-          placeholder="0"
-          value="0"
-          readonly
-        />
+      <div class="display-container" id="displayContainer">
+        <div class="previous-display" id="previousDisplay">0</div>
+        <div class="current-display" id="displayText">0</div>
       </div>
       <div class="buttons">
         <button data-operator="/" id="divideBtn">&divide;</button>

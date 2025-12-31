@@ -1,6 +1,7 @@
 // ========================
 // DOM
 // ========================
+const displayContainer = document.getElementById("displayContainer");
 const displayText = document.getElementById("displayText");
 const clearBtn = document.getElementById("clearBtn");
 const deleteBtn = document.getElementById("deleteBtn");
@@ -64,7 +65,7 @@ function setOperator(operator, buttonElement = null) {
     buttonElement.classList.add("active-operator");
     activeOperatorButton = buttonElement;
   }
-  firstNumber = displayText.value;
+  firstNumber = displayText.textContent;
   currentOperator = operator;
   shouldResetDisplay = true;
 }
@@ -82,7 +83,7 @@ function clear() {
 }
 
 function deleteNum() {
-  const current = displayText.value;
+  const current = displayText.textContent;
   if (current.length === 1 || current === "0") {
     updateDisplay("0");
   } else {
@@ -96,11 +97,11 @@ function addDecimal() {
     shouldResetDisplay = false;
     return;
   }
-  if (displayText.value.includes(".")) {
+  if (displayText.textContent.includes(".")) {
     return;
   }
 
-  updateDisplay(displayText.value + ".");
+  updateDisplay(displayText.textContent + ".");
 }
 
 // ========================
@@ -109,11 +110,11 @@ function addDecimal() {
 
 function evaluate() {
   if (currentOperator === null || firstNumber === "") return "ERROR";
-  if (currentOperator === "/" && displayText.value === "0") {
+  if (currentOperator === "/" && displayText.textContent === "0") {
     alert("You can't divide by 0, dummy!");
     return;
   }
-  secondNumber = displayText.value;
+  secondNumber = displayText.textContent;
   const result = operate(
     currentOperator,
     parseFloat(firstNumber),
@@ -129,6 +130,13 @@ function evaluate() {
   const roundedResult = Math.round(result * 100000) / 100000;
 
   updateDisplay(roundedResult);
+
+  // Add flash animation
+  displayContainer.classList.add("flash-animation");
+  setTimeout(() => {
+    displayContainer.classList.remove("flash-animation");
+  }, 300);
+
   firstNumber = roundedResult.toString(); // Store result for chaining
   currentOperator = null;
   shouldResetDisplay = true; // Next number starts fresh
@@ -144,15 +152,15 @@ function appendNumber(number) {
     shouldResetDisplay = false;
   }
 
-  if (displayText.value === "0") {
+  if (displayText.textContent === "0") {
     updateDisplay(number);
   } else {
-    updateDisplay(displayText.value + number);
+    updateDisplay(displayText.textContent + number);
   }
 }
 
 function updateDisplay(value) {
-  displayText.value = value;
+  displayText.textContent = value;
 }
 
 // ========================
@@ -176,7 +184,6 @@ deleteBtn.addEventListener("click", deleteNum);
 
 equalsBtn.addEventListener("click", () => {
   evaluate();
-  shouldResetDisplay = true;
 });
 
 decimalBtn.addEventListener("click", addDecimal);
@@ -193,6 +200,7 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Enter" || e.key === "=") {
     e.preventDefault();
     evaluate();
+    shouldResetDisplay = true;
   }
   if (e.key === "Escape") {
     clear();
