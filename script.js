@@ -127,7 +127,7 @@ clearBtn.addEventListener("click", () => {
   firstNumber = "";
   secondNumber = "";
   currentOperator = null;
-  shouldResetDisplay = "";
+  shouldResetDisplay = false;
   updateDisplay("0");
 });
 
