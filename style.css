@@ -57,6 +57,9 @@ body {
   gap: 0.65rem;
   padding: 1.5rem;
 }
+#clearBtn {
+  grid-column: 2;
+}
 
 button {
   background-color: hsl(0, 0%, 35%);
@@ -121,4 +124,11 @@ button[data-operator].keyboard-active {
 
 .flash-animation {
   animation: flash 0.3s ease-in-out;
+}
+
+footer {
+  margin-top: 3rem;
+}
+a {
+  color: hsl(200, 100%, 50%);
 }
