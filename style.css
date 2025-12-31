@@ -66,13 +66,15 @@ button {
   padding: 1.25rem;
   font-size: 1.5rem;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s;
 }
 button:hover {
   background-color: hsl(0, 0%, 45%);
+  transform: scale(1.08);
 }
 button:active {
   background-color: hsl(0, 0%, 60%);
+  transform: scale(0.95);
 }
 
 button[data-operator] {
