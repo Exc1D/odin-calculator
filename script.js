@@ -11,13 +11,14 @@ const numberBtns = document.querySelectorAll("[data-number]");
 const operatorBtns = document.querySelectorAll("[data-operator]");
 
 // ========================
-// GLOBAL VARIABLES
+// STATE VARIABLES
 // ========================
 
 let firstNumber = "";
 let secondNumber = "";
 let currentOperator = null;
 let shouldResetDisplay = false;
+let activeOperatorButton = null;
 
 // ========================
 // OPERATOR FUNCTIONS
@@ -52,9 +53,16 @@ function operate(operator, a, b) {
   }
 }
 
-function setOperator(operator) {
+function setOperator(operator, buttonElement = null) {
   if (currentOperator !== null && shouldResetDisplay === false) {
     evaluate();
+  }
+  if (activeOperatorButton !== null) {
+    activeOperatorButton.classList.remove("active-operator");
+  }
+  if (buttonElement !== null) {
+    buttonElement.classList.add("active-operator");
+    activeOperatorButton = buttonElement;
   }
   firstNumber = displayText.value;
   currentOperator = operator;
@@ -112,6 +120,11 @@ function evaluate() {
     parseFloat(secondNumber)
   );
 
+  if (activeOperatorButton !== null) {
+    activeOperatorButton.classList.remove("active-operator");
+    activeOperatorButton = null;
+  }
+
   //Round to avoid decimals
   const roundedResult = Math.round(result * 100000) / 100000;
 
@@ -153,7 +166,7 @@ numberBtns.forEach((btn) => {
 operatorBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     const operator = btn.getAttribute("data-operator");
-    setOperator(operator);
+    setOperator(operator, btn);
   });
 });
 
@@ -168,9 +181,7 @@ equalsBtn.addEventListener("click", () => {
 
 decimalBtn.addEventListener("click", addDecimal);
 
-// ========================
-// KEYBOARD SHORTCUTS
-// ========================
+// KEYBOARD SHORTCUTS (Bonus!)
 
 document.addEventListener("keydown", (e) => {
   if (e.key >= "0" && e.key <= "9") {

@@ -97,6 +97,10 @@ button[data-operator]:active {
 .operator:active {
   background-color: hsl(0, 0%, 60%);
 }
+
+.active-operator {
+  border: 2px solid white;
+}
 #equalsBtn {
   grid-column: span 2;
 }
