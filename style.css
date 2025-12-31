@@ -33,6 +33,13 @@ body {
   color: white;
 }
 
+.previous-display {
+  height: 1rem;
+  padding: 0.1rem;
+  margin-bottom: 0.15rem;
+  font-size: 0.75rem;
+}
+
 .buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -61,7 +68,7 @@ button[data-operator] {
   background-color: hsl(200, 100%, 50%);
 }
 button[data-operator]:hover {
-  background-color: hsl(200, 80%, 50%);
+  background-color: hsl(200, 98%, 36%);
 }
 button[data-operator]:active {
   background-color: hsl(200, 100%, 60%);
